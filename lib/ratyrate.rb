@@ -1,7 +1,4 @@
-require "ratyrate/version" 
-require "ratyrate/model" 
-require "ratyrate/helpers" 
+require "ratyrate/version"
+require "ratyrate/model"
 
-module Ratyrate
-    
-end
+module Ratyrate; end

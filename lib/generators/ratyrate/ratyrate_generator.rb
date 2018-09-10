@@ -5,20 +5,6 @@ class RatyrateGenerator < ActiveRecord::Generators::Base
 
   source_root File.expand_path('../templates', __FILE__)
 
-  desc "copying jquery.raty files to assets directory ..."
-  def copying
-    copy_file 'jquery.raty.js.erb', 'app/assets/javascripts/jquery.raty.js'
-    copy_file 'star-on.png', 'app/assets/images/star-on.png'
-    copy_file 'star-off.png', 'app/assets/images/star-off.png'
-    copy_file 'star-half.png', 'app/assets/images/star-half.png'
-    copy_file 'mid-star.png', 'app/assets/images/mid-star.png'
-    copy_file 'big-star.png', 'app/assets/images/big-star.png'
-    copy_file 'cancel-on.png', 'app/assets/images/cancel-on.png'
-    copy_file 'cancel-off.png', 'app/assets/images/cancel-off.png'
-    copy_file 'ratyrate.js.erb', 'app/assets/javascripts/ratyrate.js.erb'
-    copy_file 'rater_controller.rb', 'app/controllers/rater_controller.rb'
-  end
-
   desc "model is creating..."
   def create_model
     model_file = File.join('app/models', "#{file_path}.rb")

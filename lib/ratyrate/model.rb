@@ -2,13 +2,14 @@ require 'active_support/concern'
 module Ratyrate
   extend ActiveSupport::Concern
 
-  def rate(stars, user, dimension=nil, dirichlet_method=false)
+  def rate(stars, user, review=nil, dimension=nil, dirichlet_method=false)
     dimension = nil if dimension.blank?
 
     if can_rate? user, dimension
       rates(dimension).create! do |r|
         r.stars = stars
         r.rater = user
+        r.review = review
       end
       if dirichlet_method
         update_rate_average_dirichlet(stars, dimension)

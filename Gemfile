@@ -1,7 +1,5 @@
 source "http://rubygems.org"
 
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-
 ruby '2.2.2'
 
 # gem 'rspec'
