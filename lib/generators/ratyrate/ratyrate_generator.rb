@@ -5,6 +5,11 @@ class RatyrateGenerator < ActiveRecord::Generators::Base
 
   source_root File.expand_path('../templates', __FILE__)
 
+  desc "copying raty files to assets directory ..."
+  def copying
+    copy_file 'rater_controller.rb', 'app/controllers/rater_controller.rb'
+  end
+
   desc "model is creating..."
   def create_model
     model_file = File.join('app/models', "#{file_path}.rb")
