@@ -17,7 +17,7 @@ module Ratyrate
         update_rate_average(stars, dimension)
       end
     else
-      update_current_rate(stars, user, dimension)
+      update_current_rate(stars, user, review, dimension)
     end
   end
 
@@ -50,9 +50,10 @@ module Ratyrate
     end
   end
 
-  def update_current_rate(stars, user, dimension)
+  def update_current_rate(stars, user, review, dimension)
     current_rate = rates(dimension).where(rater_id: user.id).take
     current_rate.stars = stars
+    current_rate.review = review
     current_rate.save!(validate: false)
 
     if rates(dimension).count > 1
