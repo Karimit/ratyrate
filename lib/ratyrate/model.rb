@@ -5,12 +5,14 @@ module Ratyrate
   def rate(stars, user, review=nil, dimension=nil, dirichlet_method=false)
     dimension = nil if dimension.blank?
 
+    rate = nil
     if can_rate? user, dimension
-      rates(dimension).create! do |r|
+      rate = rates(dimension).new do |r|
         r.stars = stars
         r.rater = user
         r.review = review
       end
+      rate.save!
       if dirichlet_method
         update_rate_average_dirichlet(stars, dimension)
       else
@@ -19,6 +21,7 @@ module Ratyrate
     else
       update_current_rate(stars, user, review, dimension)
     end
+    rate
   end
 
   def update_rate_average_dirichlet(stars, dimension=nil)
