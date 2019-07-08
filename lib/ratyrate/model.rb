@@ -19,7 +19,7 @@ module Ratyrate
         update_rate_average(stars, dimension)
       end
     else
-      update_current_rate(stars, user, review, dimension)
+      rate = update_current_rate(stars, user, review, dimension)
     end
     rate
   end
@@ -66,6 +66,7 @@ module Ratyrate
       a.avg = stars
       a.save!(validate: false)
     end
+    current_rate
   end
 
   def overall_avg(user)
